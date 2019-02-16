@@ -33,6 +33,31 @@ class Student extends Person {
         if(this.hasMajor()) {
             description += ` Thier major is ${this.major}.`;
         }
+
+        return description;
+    }
+}
+
+// Sub-class of person
+class Traveller extends Person {
+    constructor(name, age, homeLocation) {
+        super();
+        this.homeLocation = homeLocation;
+    }
+    hasLocation() {
+        // !'' -> true
+        // !undefined -> true
+        return !!this.major;
+    }
+    //overriding method of super class
+    getGreeting() {
+        let greeting = super.getDescription();
+
+        if(this.hasLocation()) {
+            greeting += ` I'm visiting from ${this.homeLocation}.`;
+        }
+
+        return greeting;
     }
 }
 
@@ -45,5 +70,5 @@ console.log(other.getDescription());
 const student1 = new Student("Pehla bacchcha", 24, 'Computer Science');
 Console.log(student1.getDescription());
 
-const student2 = new Student();
+const student2 = new Traveller("Mayank", 24, "Khandepur");
 console.log(student2.getDescription())

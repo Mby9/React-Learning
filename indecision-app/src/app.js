@@ -1,84 +1,103 @@
-console.log("App.js is running");
-
-//JSX - JavaScript XML
-
-// create app object
-//use title/subtitles in the template
-//render template
-//only render subtutle (and p tag) if subtitle exists - logical and operatr
-// render new p tag - if options.length > 0 "here are your options" "No options"
-
-const app = {
-    title: "Indecision App",
-    subtitle: "Some random text",
-    options: ["Item 1", "Item 2"]
+class IndecisionApp extends React.Component {
+  render() {
+    const title = "Indecision";
+    const subTitle = "Put your life in the hands of a computer";
+    const options = ["Item 1", "item 2", "Item 3"]
+    return (
+      <div>
+        <Header title={title} subTitle={subTitle} />
+        <Action />
+        <Options options={options} />
+        <AddOption />
+      </div>
+    );
+  }
 }
 
-const onFormSubmit = (e) => {
+class Header extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>{this.props.title}</h1>
+        <h2>{this.props.subTitle}}</h2>
+      </div>
+    );
+  }
+}
+
+class Action extends React.Component {
+  handlePick () {
+    alert("Handle Pick")
+  }
+  render() {
+    return (
+      <div>
+        <button onClick={this.handlePick}>What should I do?</button>
+      </div>
+    );
+  }
+}
+
+class Options extends React.Component {
+  handleRemoveAll () {
+
+  }
+  render() {
+    const options = this.props.options;
+    return (
+      <div>
+        <button onClick={this.handleRemoveAll}>Remove All</button>
+        { options.map((option) => <Option key={option} optionText={option} />) }
+
+      </div>
+    );
+  }
+}
+
+
+class Option extends React.Component {
+  render() {
+    return (
+      <div>
+        {this.props.optionText}
+
+      </div>
+    );
+  }
+}
+
+class AddOption extends React.Component {
+  handleAddOption (e) {
     e.preventDefault();
- 
-    const option = e.target.elements.option.value;
-    if (opiton) {
-        app.options.push(option);
-        e.target.elements.option.value = '';
-        renderPage();
-    }
-    console.log("Form submitted");
-    
-};
+    const option = e.target.elements.option.value.trim();
 
-const reRender = (e) => {
-    e.preventDefault();
- 
-    const option = e.target.elements.option.value;
-    if (opiton) {
-        app.options.push(option);
-        e.target.elements.option.value = '';
-        renderPage();
+    if(option) {
+      alert(option);
     }
-    console.log("Form submitted");
-    
-};
+  }
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handleAddOption}>
+        <input type="text" name="option"></input>
+        <button>Add Option</button>
+        </form>
+      </div>
+    );
+  }
+}
 
-const numbers = [55, 101, 1000]
+// React components should have upper case first letter
+// const jsx = (
+//     <div>
+//         <h1>Title</h1>
+//         <Header />
+//         <Action />
+//         <Options />
+//         <AddOption />
+//     </div>
+// )
 
-const renderPage = () => {
-const template = ( //parenthesis is totally optional. Only for formatting purpose 
-<div>
-    <h1> {app.title} </h1>
-    {app.subtitle && <p>{app.subtitle}</p>} 
-    <p>{app.options.length > 0 ? "Here are your options" : "No options"}</p>
-    <p>{app.options.length}</p>
-    {
-        [99, 98, 97] /*Same as {99}{98}{97} */
-        [<p key="1">a</p>, <p key="2">b</p>, <p key="3">c</p>] /*JSX supports arrays */
-    }
-    {
-        numbers.map((number) => {
-            return <p key={number}> Number: {number}</p>
-        })
-    }
-    {/*<ol>
-        <li> Item one </li>
-        <li> Item two </li>
-    </ol>*/}
-    <ol>
-        {
-            app.options.map((option) => {
-                return <li key={option}> {option} </li>
-            })
-        }
-    </ol>
-    <form onSubmit={onFormSubmit}> {/*not returned value*/}
-        <input type="text" name="option"/>
-        <button>Add option</button>
-    </form>
-    <form onClick={reRender}> {/*not returned value*/}
-        <button>Reset</button>
-    </form>
-</div>);
-ReactDOM.render(template, appRoot);
-};
-const appRoot = document.getElementById('app');
+//ReactDOM.render(jsx, document.getElementById('app'))
 
-renderPage();
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
