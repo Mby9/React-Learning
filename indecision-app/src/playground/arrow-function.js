@@ -29,8 +29,13 @@ const user = {
 user.printPlacesLived();
 
 //more simplified
-/*printPlacesLived: function () {
+/*printPlacesLived () {
     this.cities.forEach((city) => {
         console.log(this.name + " has lived in " + city);
     });
 }*/
+
+//forEach just does the operatio and does not return anything. 
+// Whereas map() does the changes and returns a new array
+
+

@@ -26,7 +26,7 @@ class Student extends Person {
         // !undefined -> true
         return !!this.major;
     }
-    //overriding method of super class
+    // Overriding method of super class
     getDescription() {
         let description = super.getDescription();
 
