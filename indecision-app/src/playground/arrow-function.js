@@ -35,7 +35,7 @@ user.printPlacesLived();
     });
 }*/
 
-//forEach just does the operatio and does not return anything. 
+//forEach just does the operatio and does not return anything.   
 // Whereas map() does the changes and returns a new array
 
 
