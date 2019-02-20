@@ -5,19 +5,33 @@ class Counter extends React.Component {
         this.handleMinusOne = this.handleMinusOne.bind(this);
         this.handleReset = this.handleReset.bind(this);
         this.state = {
-            count = 0
+            count = 0,
         };
     }
     handleAddOne() {
-        this.state.count = this.state.count + 1;
+        //this.state.count = this.state.count + 1;
+        this.setState((prevState) => {
+            return {
+                count: prevState.count + 1
+            };
+        });
         console.log(this.state);
     }
     handleMinusOne() {
-        this.state.count = this.state.count - 1;
+        //this.state.count = this.state.count - 1;
+        this.setState((prevState) => {
+            return {
+                count: prevState.count - 1
+            };
+        });
         console.log(this.state);
     }
     handleReset() {
-        this.state.count = 0;
+        this.setState(() => {
+            return {
+                count: 0
+            };
+        });
         console.log(this.state);
     }
     render() {
