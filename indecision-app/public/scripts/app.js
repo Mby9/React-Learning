@@ -198,6 +198,9 @@ var AddOption = function (_React$Component6) {
     var _this6 = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
 
     _this6.handleAddOption = _this6.handleAddOption.bind(_this6);
+    _this6.state = {
+      erro: undefined
+    };
     return _this6;
   }
 
@@ -206,10 +209,7 @@ var AddOption = function (_React$Component6) {
     value: function handleAddOption(e) {
       e.preventDefault();
       var option = e.target.elements.option.value.trim();
-
-      if (option) {
-        this.props.handleAddOption(option);
-      }
+      var error = this.props.handleAddOption(option);
     }
   }, {
     key: "render",
