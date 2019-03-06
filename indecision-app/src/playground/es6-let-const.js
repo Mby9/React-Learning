@@ -1,34 +1,22 @@
-// function square(x) {
-//     return x * x;
-// };
-// console.log(square(3));
+var nameVar = 'Andrew';
+var nameVar = 'Mike';
+console.log('nameVar', nameVar);
 
-// //arrow functions are alwyas anonymous
-// // const squareArrow = (x) => {
-// //     return x * x;
-// // }; 
+let nameLet = 'Jen';
+nameLet = 'Julie';
+console.log('nameLet', nameLet);
 
-// const squareArrow = (x) => x*x;
+const nameConst = 'Frank';
+console.log('nameConst', nameConst);
 
-// console.log(squareArrow(4));
+// Block scoping
 
-const fullName = "Mayank Yadav";
+const fullName = 'Jen Mead';
+let firstName;
 
-let getFirstName = (x) => x.split(' ')[0]; 
+if (fullName) {
+  firstName = fullName.split(' ')[0];
+  console.log(firstName);
+}
 
-console.log(getFirstName(fullName));
-
-//challenge
-
-const multiplier = {
-    // numbers - array of numberds
-    //multiplyby - single number
-    // multiply - return a new array where the number have been multiplied
-    numbers : [1, 2, 3],
-    multiplyBy: 2,
-    multiply() {
-        return this.numbers.map((numbers) => numbers *2);
-    }
-};
-
-console.log(multiplier.multiply()); // [1, 2, 3] *2 [2, 4, 6]
+console.log(firstName);
