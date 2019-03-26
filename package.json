@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "redux": "3.7.2"
   }
 }
